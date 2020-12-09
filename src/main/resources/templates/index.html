@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h3>Лабораторная работа №4</h3>
+<form th:action="@{/records}" th:object="${record}" method="post">
+    <label for="full-name">ФИО</label>
+    <input id="full-name" type="text" th:field="*{fullName}">
+    <br>
+    <label for="group-number">Группа</label>
+    <input id="group-number" type="text" th:field="*{groupNumber}">
+    <br>
+    <button type="submit" id="create-record">Создать запись</button>
+</form>
+<ul th:each="record : ${records}">
+    <li><span th:utext="${record.fullName}"></span></li>
+</ul>
+<select id="menu" onchange="location = this.value;">
+    <option value="">Меню</option>
+    <option value="Лаб1.docx">Лабораторная работа №1</option>
+    <option value="Лаб2.docx">Лабораторная работа №2</option>
+    <option value="Лаб3.docx">Лабораторная работа №3</option>
+</select>
+</body>
+</html>
